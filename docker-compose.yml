@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  banana:
+    image: &banana_version recruiter-1912/banana:20.8.1
+    build:
+      context: ./platform/banana
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      MN_VERSION: *banana_version
+    volumes:
+      - ./platform/banana:/banana
