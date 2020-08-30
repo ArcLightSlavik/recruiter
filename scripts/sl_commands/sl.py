@@ -1,16 +1,22 @@
 import argh
 
+from . import services
+
 
 def setup():
     print('setup command')
 
 
-def build():
-    print('build command')
+def build(service):
+    services.get_service(service).build()
 
 
 def serve():
     print('serve command')
+
+
+def shell():
+    print('shell command')
 
 
 def stop():
@@ -19,10 +25,6 @@ def stop():
 
 def push():
     print('push command')
-
-
-def shell():
-    print('shell command')
 
 
 def deploy():

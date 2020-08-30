@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # without a . on purpose
-from sl import execute
+from sl_commands.sl import execute
 
 if __name__ == '__main__':
     execute()
