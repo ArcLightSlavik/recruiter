@@ -1,7 +1,7 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # without a . on purpose
-from sl_commands.sl import execute
+from sl_commands.sl import execute # noqa
 
 if __name__ == '__main__':
     execute()
