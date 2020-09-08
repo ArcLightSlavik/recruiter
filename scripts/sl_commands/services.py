@@ -1,6 +1,7 @@
 from abc import ABC
 
-from .utils import call_root
+from . import utils
+from . import docker
 
 
 class Service:
@@ -15,10 +16,10 @@ class Service:
 
     def build(self):
         cmd = f'docker-compose build {self.name()}'
-        call_root(cmd)
+        utils.call_root(cmd)
 
     def shell(self):
-        raise NotImplementedError('You can not shell into this service')
+        docker.run(self.name(), self.terminal, no_deps=True)
 
 
 class Banana(Service, ABC):
