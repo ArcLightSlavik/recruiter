@@ -10,8 +10,11 @@ This repository is optimized for unix operating system and uses docker exclusive
 2. cd ~/code
 3. git clone https://github.com/ArcLightSlavik/recruiter
 4. sudo ln -s ~/code/recruiter/scripts/sl /usr/local/bin/sl
+5. cd ~/code/recruiter
+6. pip3 install -r requirements.txt
+7. 🚀
 
-After which you should be able to use the `sl` command for manipulate docker images.
+You will be able to use the `sl` command for manipulate docker images.
 The build process is split into:
 1. `sl setup  |service_name|` - gets all of the required files for the image to work.
 2. `sl build  |service_name|` - builds the image using the standart docker-compose build.
