@@ -11,3 +11,8 @@ def call(cmd):
 def call_root(cmd):
     os.chdir(os.path.expanduser('~/code/recruiter'))
     call(f'{cmd}')
+
+
+def call_output(cmd):
+    command = shlex.split(cmd)
+    return subprocess.check_output(command)
