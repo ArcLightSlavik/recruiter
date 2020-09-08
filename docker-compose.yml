@@ -8,9 +8,9 @@ services:
       context: ./platform/banana
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "7999:7999"
     environment:
-      PORT: 8000
+      PORT: 7999
       MN_VERSION: *banana_version
     volumes:
       - ./platform/banana:/banana
