@@ -2,7 +2,7 @@ from . import utils
 
 
 def run(docker_image, cmd, no_deps=False):
-    # If monitor_{service}_1 is not running, runs a temp container, execute command and remove container.
+    # If recruiter_{service}_1 is not running, runs a temp container, execute command and remove container.
     # If container is already running, "exec" inside container
 
     docker_service_name = f'recruiter_{docker_image}_1'
