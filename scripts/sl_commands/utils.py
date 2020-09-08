@@ -1,9 +1,13 @@
+import os
+import shlex
 import subprocess
 
 
 def call(cmd):
-    return subprocess.check_call(cmd, shell=True)  # @TODO: avoid using shell=true
+    command = shlex.split(cmd)
+    return subprocess.check_call(command)
 
 
 def call_root(cmd):
-    call(f'cd ~/code/recruiter && {cmd}')
+    os.chdir(os.path.expanduser('~/code/recruiter'))
+    call(f'{cmd}')
