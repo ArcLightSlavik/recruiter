@@ -11,8 +11,8 @@ def build(service):
     services.get_service(service).build()
 
 
-def serve():
-    print('serve command')
+def serve(service):
+    services.get_service(service).serve()
 
 
 def shell(service):

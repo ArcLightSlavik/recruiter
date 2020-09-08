@@ -18,6 +18,9 @@ class Service:
         cmd = f'docker-compose build {self.name()}'
         utils.call_root(cmd)
 
+    def serve(self):
+        docker.run(self.name(), './serve.sh', no_deps=True)
+
     def shell(self):
         docker.run(self.name(), self.terminal, no_deps=True)
 
