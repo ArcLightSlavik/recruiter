@@ -7,7 +7,7 @@ def run(docker_image, cmd, no_deps=False):
 
     docker_service_name = f'recruiter_{docker_image}_1'
     if not is_container_running(docker_service_name):
-        print(f'Service <{docker_image}> is not running, so I will start a container for this command and remove it afterwards')
+        print(f'<{docker_image}> is not running, so I will start a container for this command and remove it afterwards')
         options = ['--rm']
         if no_deps:
             options.append('--no-deps')
