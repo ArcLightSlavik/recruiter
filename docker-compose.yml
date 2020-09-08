@@ -3,7 +3,7 @@ version: '3'
 services:
 
   banana:
-    image: &banana_version recruiter-1912/banana:20.8.1
+    image: &banana_version recruiter-1912/banana:0.0.1
     build:
       context: ./platform/banana
       dockerfile: Dockerfile
