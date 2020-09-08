@@ -15,8 +15,8 @@ def serve():
     print('serve command')
 
 
-def shell():
-    print('shell command')
+def shell(service):
+    services.get_service(service).shell()
 
 
 def stop():
