@@ -1,4 +1,4 @@
-# :dart: Recruiter
+# 🎯 Recruiter
 
 Recruier is a platform for display and interaction with job applications, built using Python and FastAPI.
 
