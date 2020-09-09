@@ -3,8 +3,8 @@ import argh
 from . import services
 
 
-def setup():
-    print('setup command')
+def setup(service):
+    services.get_service(service).setup()
 
 
 def build(service):
