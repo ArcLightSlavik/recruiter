@@ -27,11 +27,19 @@ class Service:
 
 class Banana(Service, ABC):
 
-    path = None  # @TODO need to change this later
+    pass
+
+
+class Redis(Service, ABC):
+
+    def serve(self):
+        cmd = f'docker-compose up {self.name()}'
+        utils.call_root(cmd)
 
 
 _services = [
-    Banana
+    Banana,
+    Redis
 ]
 
 _service_dict = {service.name(): service for service in _services}
