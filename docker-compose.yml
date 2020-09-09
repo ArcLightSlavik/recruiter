@@ -2,15 +2,30 @@ version: '3'
 
 services:
 
+  ### DEV
+
+  ### API
   banana:
     image: &banana_version recruiter-1912/banana:0.0.1
     build:
       context: ./platform/banana
       dockerfile: Dockerfile
+    depends_on:
+      - redis
     ports:
       - "7999:7999"
     environment:
       PORT: 7999
+      REDISHOST: redis
+      REDISPORT: "4999"
       MN_VERSION: *banana_version
     volumes:
       - ./platform/banana:/banana
+
+  ### DATABASE
+  redis:
+    image: redis:6.0.6
+    command: ["--notify-keyspace-events", "Ex", "--port 4999"]
+    ports:
+      - "4999:4999"
+    tty: true
