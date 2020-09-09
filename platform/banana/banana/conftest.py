@@ -1,7 +1,6 @@
-import pytest
 import httpx
-
-from fastapi.testclient import TestClient
+import pytest
+import fastapi.testclient
 
 from . import main
 
@@ -22,7 +21,7 @@ def async_redis_db():
 
 @pytest.fixture
 def api():
-    return TestClient(main.app)
+    return fastapi.testclient.TestClient(main.app)
 
 
 @pytest.fixture
