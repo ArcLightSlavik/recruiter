@@ -10,7 +10,7 @@ class Lazy:
     print(obj.answer_to_life) # will just look up stored value
     """
 
-    def __init__(self, calculate_function):
+    def __init__(self, calculate_function) -> None:
         self._calculate = calculate_function
 
     def __get__(self, obj, _=None):

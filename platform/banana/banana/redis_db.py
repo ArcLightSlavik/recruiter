@@ -8,18 +8,18 @@ from .lazy import Lazy
 class Redis:
 
     @Lazy
-    def client(self):
+    def client(self) -> redis.StrictRedis:
         return redis.StrictRedis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']))
 
 
 class AsyncRedis:
     _redis_client = None
 
-    def initialize(self):
+    def initialize(self) -> None:
         self._redis_client = aredis.StrictRedis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']))
 
     @property
-    def client(self):
+    def client(self) -> aredis.StrictRedis:
         if not self._redis_client:
             self.initialize()
         return self._redis_client
