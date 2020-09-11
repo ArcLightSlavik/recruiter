@@ -3,6 +3,22 @@ version: '3'
 services:
 
   ### DEV
+  dev:
+    image: &dev_version recruiter-1912/dev:0.0.1
+    build:
+      context: ./dev
+      dockerfile: Dockerfile
+    environment:
+      MN_VERSION: *dev_version
+    volumes:
+      - ~/code:/app
+      - ~/code/recruiter:/app/recruiter
+      - ~/code/recruiter/platform:/app/recruiter/platform
+    working_dir: /app/recruiter
+    command: /bin/bash
+    restart: always
+    stdin_open: true
+    tty: true
 
   ### API
   banana:

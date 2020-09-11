@@ -11,7 +11,7 @@ class Service:
         return cls.__name__.lower()
 
     def setup(self):
-        raise NotImplementedError('Service does not have a setup step')
+        docker.run('dev', self.path + '/setup.sh')
 
     def build(self):
         cmd = f'docker-compose build {self.name()}'
@@ -22,6 +22,11 @@ class Service:
 
     def shell(self):
         docker.run(self.name(), self.terminal)
+
+
+class Dev(Service):
+
+    path = '/app/recruiter'
 
 
 class Banana(Service):
@@ -37,6 +42,7 @@ class Redis(Service):
 
 
 _services = [
+    Dev,
     Banana,
     Redis
 ]
