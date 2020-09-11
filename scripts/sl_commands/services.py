@@ -4,6 +4,7 @@ from . import docker
 
 class Service:
     terminal = '/bin/bash'
+    path = None
 
     @classmethod
     def name(cls):
@@ -17,15 +18,15 @@ class Service:
         utils.call_root(cmd)
 
     def serve(self):
-        docker.run(self.name(), './serve.sh', no_deps=True)
+        docker.run(self.name(), './serve.sh')
 
     def shell(self):
-        docker.run(self.name(), self.terminal, no_deps=True)
+        docker.run(self.name(), self.terminal)
 
 
 class Banana(Service):
 
-    pass
+    path = '~/code/recruiter/platform/banana'
 
 
 class Redis(Service):
