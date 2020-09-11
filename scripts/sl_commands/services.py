@@ -1,5 +1,3 @@
-from abc import ABC
-
 from . import utils
 from . import docker
 
@@ -25,12 +23,12 @@ class Service:
         docker.run(self.name(), self.terminal, no_deps=True)
 
 
-class Banana(Service, ABC):
+class Banana(Service):
 
     pass
 
 
-class Redis(Service, ABC):
+class Redis(Service):
 
     def serve(self):
         cmd = f'docker-compose up {self.name()}'
