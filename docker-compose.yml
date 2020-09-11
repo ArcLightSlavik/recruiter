@@ -12,10 +12,10 @@ services:
       MN_VERSION: *dev_version
     volumes:
       - ~/code:/app
-      - ~/code/recruiter:/app/recruiter
-      - ~/code/recruiter/platform:/app/recruiter/platform
+      - ~/code/recruiter:/home/recruiter
+      - ~/code/recruiter/platform:/home/recruiter/platform
       - ~/code/recruiter/scripts:/opt/scripts
-    working_dir: /app/recruiter
+    working_dir: /home/recruiter
     command: /bin/bash
     restart: always
     stdin_open: true
@@ -37,7 +37,8 @@ services:
       REDISPORT: "4999"
       MN_VERSION: *banana_version
     volumes:
-      - ./platform/banana:/banana
+      - ~/code/recruiter/platform:/home/platform
+    working_dir: /home/platform/banana
 
   ### DATABASE
   redis:
