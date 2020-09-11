@@ -31,7 +31,7 @@ class Dev(Service):
 
 class Banana(Service):
 
-    path = '~/code/recruiter/platform/banana'
+    path = '/app/recruiter/platform/banana'
 
 
 class Redis(Service):
