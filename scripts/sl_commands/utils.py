@@ -16,3 +16,13 @@ def call_root(cmd):
 def call_output(cmd):
     command = shlex.split(cmd)
     return subprocess.check_output(command)
+
+
+def get_main_folder():
+    if os.path.exists('/app/recruiter'):
+        return '/app/recruiter'
+
+    userfolder = os.path.expanduser('~/code/recruiter')
+    if os.path.exists(userfolder):
+        return userfolder
+    raise Exception('Recruiter folder not found')
