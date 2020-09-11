@@ -14,6 +14,7 @@ services:
       - ~/code:/app
       - ~/code/recruiter:/app/recruiter
       - ~/code/recruiter/platform:/app/recruiter/platform
+      - ~/code/recruiter/scripts:/opt/scripts
     working_dir: /app/recruiter
     command: /bin/bash
     restart: always
