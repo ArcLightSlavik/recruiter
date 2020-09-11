@@ -2,7 +2,7 @@ import os
 import redis
 import aredis
 
-from .lazy import Lazy
+from recruiter.utils.lazy import Lazy
 
 
 class Redis:
