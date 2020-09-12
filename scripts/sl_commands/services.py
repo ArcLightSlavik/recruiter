@@ -24,6 +24,10 @@ class Service:
     def shell(self):
         docker.run(self.name(), self.terminal)
 
+    def stop(self):
+        utils.call_root(f'docker-compose stop {self.name()}')
+        utils.call_root(f'docker rm {docker.list_exited()}')
+
 
 class Dev(Service):
 

@@ -27,3 +27,9 @@ def is_container_running(container_name):
     if len(res) > 0:
         return True
     return False
+
+
+def list_exited():
+    res = utils.call_output("docker ps -a --format '{{.Names}}' -f 'status=exited'")
+    res_decoded = res.decode('utf-8')
+    return res_decoded.strip().split('\n')[0]

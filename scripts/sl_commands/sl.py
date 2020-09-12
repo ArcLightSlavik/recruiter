@@ -19,8 +19,8 @@ def shell(service):
     services.get_service(service).shell()
 
 
-def stop():
-    print('stop command')
+def stop(service):
+    services.get_service(service).stop()
 
 
 def push():
