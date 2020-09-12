@@ -18,7 +18,8 @@ class Service:
         utils.call_root(cmd)
 
     def serve(self):
-        docker.run(self.name(), './serve.sh')
+        cmd = f'docker-compose up {self.name()}'
+        utils.call_root(cmd)
 
     def shell(self):
         docker.run(self.name(), self.terminal)
@@ -36,9 +37,7 @@ class Banana(Service):
 
 class Redis(Service):
 
-    def serve(self):
-        cmd = f'docker-compose up {self.name()}'
-        utils.call_root(cmd)
+    pass
 
 
 _services = [
