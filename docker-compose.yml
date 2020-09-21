@@ -9,7 +9,7 @@ services:
       context: ./dev
       dockerfile: Dockerfile
     environment:
-      MN_VERSION: *dev_version
+      SL_VERSION: *dev_version
     volumes:
       - ~/code:/app
       - ~/code/recruiter:/home/recruiter
@@ -35,7 +35,7 @@ services:
       PORT: 7999
       REDIS_HOST: redis
       REDIS_PORT: "4999"
-      MN_VERSION: *banana_version
+      SL_VERSION: *banana_version
     volumes:
       - ~/code/recruiter/platform:/home/platform
     working_dir: /home/platform/banana

@@ -8,7 +8,7 @@ WORKDIR /banana
 
 ENV PYTHONPATH=/home:/home/platform/banana/vendored:$PYTHONPATH
 
-RUN echo 'export PS1="${MN_VERSION:15}:\w$ "' >> /root/.bashrc
+RUN echo 'export PS1="${SL_VERSION:15}:\w$ "' >> /root/.bashrc
 
 EXPOSE $PORT
 
