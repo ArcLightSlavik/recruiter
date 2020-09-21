@@ -35,6 +35,7 @@ services:
       PORT: 7999
       REDIS_HOST: redis
       REDIS_PORT: "4999"
+      POSTGRES_URL: postgresql://hello_fast:hello_fast@postgres:5432/hello_fast_dev
       SL_ENVIRONMENT: test
       SL_VERSION: *banana_version
     volumes:
@@ -45,6 +46,8 @@ services:
   ### DATABASE
   postgres:
     image: postgres:12.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
     environment:
@@ -58,3 +61,6 @@ services:
     ports:
       - "4999:4999"
     tty: true
+
+volumes:
+  postgres_data:
