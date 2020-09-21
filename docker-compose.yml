@@ -35,6 +35,7 @@ services:
       PORT: 7999
       REDIS_HOST: redis
       REDIS_PORT: "4999"
+      SL_ENVIRONMENT: test
       SL_VERSION: *banana_version
     volumes:
       - ~/code/recruiter/platform:/home/platform
