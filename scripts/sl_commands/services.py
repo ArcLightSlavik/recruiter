@@ -40,14 +40,18 @@ class Banana(Service):
 
 
 class Redis(Service):
+    pass
 
+
+class Postgres(Service):
     pass
 
 
 _services = [
     Dev,
     Banana,
-    Redis
+    Redis,
+    Postgres,
 ]
 
 _service_dict = {service.name(): service for service in _services}
