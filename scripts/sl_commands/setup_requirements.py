@@ -12,9 +12,9 @@ from utils import get_main_folder # noqa
 def filenames_from_requirements(requirements_list):
     for item in requirements_list:
         if isinstance(item, dict):
-            for partial_path, subitems in item.items():
-                for subitem in filenames_from_requirements(subitems):
-                    yield os.path.join(partial_path, subitem)
+            for partial_path, sub_items in item.items():
+                for sub_item in filenames_from_requirements(sub_items):
+                    yield os.path.join(partial_path, sub_item)
         else:
             yield item
 

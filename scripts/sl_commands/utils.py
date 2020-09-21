@@ -22,7 +22,7 @@ def get_main_folder():
     if os.path.exists('/app/recruiter'):
         return '/app/recruiter'
 
-    userfolder = os.path.expanduser('~/code/recruiter')
-    if os.path.exists(userfolder):
-        return userfolder
+    user_folder = os.path.expanduser('~/code/recruiter')
+    if os.path.exists(user_folder):
+        return user_folder
     raise Exception('Recruiter folder not found')
