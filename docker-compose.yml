@@ -33,8 +33,8 @@ services:
       - "7999:7999"
     environment:
       PORT: 7999
-      REDISHOST: redis
-      REDISPORT: "4999"
+      REDIS_HOST: redis
+      REDIS_PORT: "4999"
       MN_VERSION: *banana_version
     volumes:
       - ~/code/recruiter/platform:/home/platform

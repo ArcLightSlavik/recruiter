@@ -9,14 +9,14 @@ class Redis:
 
     @Lazy
     def client(self) -> redis.StrictRedis:
-        return redis.StrictRedis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']))
+        return redis.StrictRedis(host=os.environ['REDIS_HOST'], port=int(os.environ['REDIS_PORT']))
 
 
 class AsyncRedis:
     _redis_client = None
 
     def initialize(self) -> None:
-        self._redis_client = aredis.StrictRedis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']))
+        self._redis_client = aredis.StrictRedis(host=os.environ['REDIS_HOST'], port=int(os.environ['REDIS_PORT']))
 
     @property
     def client(self) -> aredis.StrictRedis:
