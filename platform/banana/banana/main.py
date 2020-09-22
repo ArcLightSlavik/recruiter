@@ -1,7 +1,5 @@
 import fastapi
 
-from typing import Dict
-
 from . import notes
 from . import resource
 from . import postgres_db
