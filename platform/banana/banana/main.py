@@ -9,6 +9,7 @@ app = fastapi.FastAPI()
 app.include_router(notes.notes_api)
 app.include_router(resource.resource_router)
 
+
 @app.on_event("startup")
 async def startup():
     await postgres_db.database.connect()
