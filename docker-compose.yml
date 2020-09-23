@@ -28,6 +28,7 @@ services:
       context: ./platform/banana
       dockerfile: Dockerfile
     depends_on:
+      - postgres
       - redis
     ports:
       - "7999:7999"
