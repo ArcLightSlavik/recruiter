@@ -58,10 +58,9 @@ services:
 
   redis:
     image: redis:6.0.6
-    command: ["--notify-keyspace-events", "Ex", "--port 4999"]
     ports:
       - "4999:4999"
-    tty: true
+    command: ["--port 4999"]
 
 volumes:
   postgres_data:
