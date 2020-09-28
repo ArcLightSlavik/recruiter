@@ -33,8 +33,12 @@ services:
       PORT: 7999
       REDIS_HOST: redis
       REDIS_PORT: "4999"
-      POSTGRES_URL: postgresql://hello_fast:hello_fast@postgres:5432/hello_fast_dev
       SL_ENVIRONMENT: test
+      POSTGRES_DB: banana_dev
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5999
+      POSTGRES_USER: banana
+      POSTGRES_PASSWORD: banana
       SL_VERSION: *banana_version
     volumes:
       - ~/code/recruiter/platform:/home/platform
@@ -44,20 +48,16 @@ services:
   ### DATABASE
   postgres:
     image: postgres:12.4
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     ports:
-      - "5432:5432"
+      - "5999:5999"
     environment:
-      - POSTGRES_DB=hello_fast_dev
-      - POSTGRES_USER=hello_fast
-      - POSTGRES_PASSWORD=hello_fast
+      - POSTGRES_DB=banana_dev
+      - POSTGRES_USER=banana
+      - POSTGRES_PASSWORD=banana
+    command: -p 5999
 
   redis:
     image: redis:6.0.6
     ports:
       - "4999:4999"
-    command: ["--port 4999"]
-
-volumes:
-  postgres_data:
+    command: --port 4999
