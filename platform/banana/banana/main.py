@@ -1,20 +1,35 @@
-import fastapi
+from fastapi import FastAPI
+from fastapi import Request
 
-from . import notes
-from . import resource
-from . import postgres_db
+from fastapi.responses import JSONResponse
+from tortoise.contrib.fastapi import register_tortoise
 
-app = fastapi.FastAPI()
+from . import user_api
+from . import resource_api
+from .exceptions import CredentialsException
+from .postgres_db import TortoiseSettings
 
-app.include_router(notes.notes_api)
-app.include_router(resource.resource_router)
+
+app = FastAPI()
+app.include_router(user_api.user_router)
+app.include_router(resource_api.resource_router)
 
 
 @app.on_event("startup")
-async def startup():
-    await postgres_db.database.connect()
+def startup():
+    config = TortoiseSettings.generate()
+    register_tortoise(
+        app,
+        db_url=config.db_url,
+        generate_schemas=config.generate_schemas,
+        modules=config.modules,
+    )
 
 
-@app.on_event("shutdown")
-async def shutdown():
-    await postgres_db.database.disconnect()
+@app.exception_handler(CredentialsException)
+def credentials_exception_handler(_request: Request, _exc: CredentialsException):
+    return JSONResponse(
+        status_code=401,
+        content=dict(message="Could not validate credentials"),
+        headers={"WWW-Authenticate": "Bearer"},
+    )
