@@ -2,4 +2,4 @@
 set -e
 echo "Serving application with reload"
 
-exec gunicorn -k uvicorn.workers.UvicornWorker -b :${PORT} --reload banana.main:app
+exec gunicorn -c gunicorn.conf.py -b :${PORT} --reload banana.main:app
