@@ -33,13 +33,13 @@ services:
       PORT: 7999
       REDIS_HOST: redis
       REDIS_PORT: "4999"
-      SL_ENVIRONMENT: test
       POSTGRES_DB: banana_dev
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5999
       POSTGRES_USER: banana
       POSTGRES_PASSWORD: banana
       SL_VERSION: *banana_version
+      SL_ENVIRONMENT: test
     volumes:
       - ~/code/recruiter/platform:/home/platform
     working_dir: /home/platform/banana
