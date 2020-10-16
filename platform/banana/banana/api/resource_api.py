@@ -1,6 +1,6 @@
-import fastapi
-
 from typing import Dict
+
+import fastapi
 
 resource_router = fastapi.APIRouter()
 
