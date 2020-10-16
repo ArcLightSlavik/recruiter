@@ -2,7 +2,7 @@ class Lazy:
     """
     class A:
         @Lazy
-        def answer_to_life(s):
+        def answer_to_life(self):
             return expensive_calculation
 
     obj = A()
