@@ -1,7 +1,7 @@
 from pydantic import BaseSettings
 from pydantic import Field
 
-DB_MODELS = ["banana.user"]
+DB_MODELS = ["banana.users.models"]
 POSTGRES_DB_URL = "postgres://{postgres_user}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_db}"
 
 
