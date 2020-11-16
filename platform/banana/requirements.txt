@@ -6,6 +6,7 @@ httpx==0.14.3
 requests==2.24.0
 
 # Postgres
+SQLAlchemy==1.4.0b1
 asyncpg==0.21.0
 
 # Redis
