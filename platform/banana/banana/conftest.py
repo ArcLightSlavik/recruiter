@@ -20,10 +20,10 @@ def async_redis_db():
 
 
 @pytest.fixture
-def api():
+def api() -> fastapi.testclient.TestClient:
     return fastapi.testclient.TestClient(main.app)
 
 
 @pytest.fixture
-def async_api():
+def async_api() -> httpx.AsyncClient:
     return httpx.AsyncClient(app=main.app, base_url="http://test")
