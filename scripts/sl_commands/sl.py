@@ -3,10 +3,6 @@ import argh
 from . import services
 
 
-def setup(service):
-    services.get_service(service).setup()
-
-
 def build(service):
     services.get_service(service).build()
 
@@ -33,7 +29,6 @@ def deploy():
 
 def execute():
     argh.dispatch_commands([
-        setup,
         build,
         serve,
         shell,

@@ -10,9 +10,6 @@ class Service:
     def name(cls):
         return cls.__name__.lower()
 
-    def setup(self):
-        docker.run(Dev.name(), self.path + '/setup.sh')
-
     def build(self):
         cmd = f'docker-compose build {self.name()}'
         utils.call_root(cmd)
