@@ -62,3 +62,17 @@ services:
     ports:
       - "4999:4999"
     command: --port 4999
+
+  ### UTILS
+  pypi:
+    image: pypi_server:0.0.1
+    build:
+      context: pypi_server
+      dockerfile: Dockerfile
+    environment:
+      port: "1673"
+    ports:
+      - "1673:1673"
+    volumes:
+      - ./pypi_server:/home/pypi_server
+    working_dir: /home/pypi_server
