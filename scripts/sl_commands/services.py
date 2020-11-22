@@ -36,6 +36,10 @@ class Banana(Service):
     path = '/app/recruiter/platform/banana'
 
 
+class Pypi(Service):
+    pass
+
+
 class Redis(Service):
     pass
 
@@ -47,6 +51,7 @@ class Postgres(Service):
 _services = [
     Dev,
     Banana,
+    Pypi,
     Redis,
     Postgres,
 ]
