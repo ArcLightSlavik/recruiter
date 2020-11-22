@@ -1,9 +1,11 @@
 argh==0.26.2
 PyYAML==5.3.1
-twine==3.2.0
 
 # Tests
 pytest==6.0.1
 pytest-mock==3.3.1
 pytest-asyncio==0.14.0
 pytest-cov==2.10.1
+
+# Installed via dockerfile
+# poetry==1.1.4
