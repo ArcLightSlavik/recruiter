@@ -24,7 +24,8 @@ The build process is split into:
 6. `sl deploy |service_name|` - deploys a service to a cloud provider.
 
 The image also includes `pip` packages located in `pipable`, they can be built and publish by using:
-This does assume that you have .env file with PyPi username and password.
 1. Update the version number in `pyproject.toml`.
 2. `sl pip-build |service_name|` - builds a .whl file with poetry.
 3. `sl pip-publish |service_name|` - publishes the package to PyPi by default.
+
+This does assume that you have .env file with PyPi username and password.
