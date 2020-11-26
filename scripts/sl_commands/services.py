@@ -26,6 +26,12 @@ class Service:
         utils.call_root(f'docker rm {docker.list_exited()}')
 
 
+class PipService(Service):
+
+    def pip_build(self):
+        docker.run(Dev.name(), f'cd {self.path} && poetry build')
+
+
 class Dev(Service):
 
     path = '/app/recruiter'
@@ -33,7 +39,15 @@ class Dev(Service):
 
 class Banana(Service):
 
-    path = '/app/recruiter/platform/banana'
+    path = '/home/recruiter/platform/banana'
+
+
+class Utils(PipService):
+
+    path = '/home/recruiter/pipable/utils'
+
+    def serve(self):
+        raise NotImplementedError
 
 
 class Pypi(Service):
@@ -51,6 +65,7 @@ class Postgres(Service):
 _services = [
     Dev,
     Banana,
+    Utils,
     Pypi,
     Redis,
     Postgres,

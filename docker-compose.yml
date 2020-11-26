@@ -14,6 +14,7 @@ services:
     volumes:
       - ~/code:/app
       - ~/code/recruiter:/home/recruiter
+      - ~/code/recruiter/pipable:/home/recruiter/pipable
       - ~/code/recruiter/platform:/home/recruiter/platform
       - ~/code/recruiter/scripts:/opt/scripts
     working_dir: /home/recruiter
@@ -45,6 +46,22 @@ services:
       - ~/code/recruiter/platform:/home/platform
     working_dir: /home/platform/banana
     command: /home/platform/banana/serve.sh
+
+  ### PIPABLE
+  utils:
+    image: &utils_version recruiter-1912/utils:0.0.1
+    build:
+      context: ./pipable/utils
+      dockerfile: Dockerfile
+    ports:
+      - "7412:7412"
+    environment:
+      PORT: 7412
+      SL_VERSION: *utils_version
+      SL_ENVIRONMENT: test
+    volumes:
+      - ~/code/recruiter/pipable:/home/platform
+    working_dir: /home/platform/utils
 
   ### DATABASE
   postgres:
