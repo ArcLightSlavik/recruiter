@@ -12,12 +12,12 @@ def run(docker_image, cmd, no_deps=True):
         if no_deps:
             options.append('--no-deps')
         option_str = ' '.join(options)
-        cmd = f'docker-compose run {option_str} {docker_image} {cmd}'
+        cmd = f'docker-compose run {option_str} {docker_image} bash -c "{cmd}"'
         utils.call_root(cmd)
         print('Cleaning up container')
     else:
         print(f'Service <{docker_image}> is already running, so this command executes there')
-        utils.call_root(f'docker-compose exec {docker_image} {cmd}')
+        utils.call_root(f'docker-compose exec {docker_image} bash -c "{cmd}"')
 
 
 def is_container_running(container_name):
