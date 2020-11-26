@@ -23,7 +23,7 @@ The build process is split into:
 5. `sl push   |service_name|` - pushes the image to a remote container manager.
 6. `sl deploy |service_name|` - deploys a service to a cloud provider.
 
-The image also includes `pip` packages located in `pipable`, they can be built and publish by using:
+The image also includes `pip` packages located in `pipable`, they can be built and published by using:
 1. Update the version number in `pyproject.toml`.
 2. `sl pip-build |service_name|` - builds a .whl file with poetry.
 3. `sl pip-publish |service_name|` - publishes the package to PyPi by default.
