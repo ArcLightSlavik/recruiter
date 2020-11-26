@@ -19,6 +19,10 @@ def stop(service):
     services.get_service(service).stop()
 
 
+def pip_build(service):
+    services.get_service(service).pip_build()
+
+
 def push():
     print('push command')
 
@@ -33,6 +37,7 @@ def execute():
         serve,
         shell,
         stop,
+        pip_build,
         push,
         deploy,
     ])

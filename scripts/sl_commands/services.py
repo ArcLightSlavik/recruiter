@@ -34,7 +34,7 @@ class PipService(Service):
 
 class Dev(Service):
 
-    path = '/app/recruiter'
+    path = '/home/recruiter'
 
 
 class Banana(Service):

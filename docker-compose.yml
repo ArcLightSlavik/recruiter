@@ -12,7 +12,7 @@ services:
       SL_VERSION: *dev_version
       SL_ENVIRONMENT: test
     volumes:
-      - ~/code:/app
+      - ~/code:/home
       - ~/code/recruiter:/home/recruiter
       - ~/code/recruiter/pipable:/home/recruiter/pipable
       - ~/code/recruiter/platform:/home/recruiter/platform
