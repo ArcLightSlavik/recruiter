@@ -29,7 +29,10 @@ class Service:
 class PipService(Service):
 
     def pip_build(self):
-        docker.run(Dev.name(), f'cd {self.path} && poetry build')
+        docker.run(Dev.name(), f'cd {self.path} && ./build.sh')
+
+    def pip_publish(self):
+        docker.run(Dev.name(), f'cd {self.path} && ./publish.sh')
 
 
 class Dev(Service):

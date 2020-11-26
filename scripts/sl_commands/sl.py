@@ -23,6 +23,10 @@ def pip_build(service):
     services.get_service(service).pip_build()
 
 
+def pip_publish(service):
+    services.get_service(service).pip_publish()
+
+
 def push():
     print('push command')
 
@@ -38,6 +42,7 @@ def execute():
         shell,
         stop,
         pip_build,
+        pip_publish,
         push,
         deploy,
     ])
