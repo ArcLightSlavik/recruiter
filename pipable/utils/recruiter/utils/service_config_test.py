@@ -31,6 +31,11 @@ def test_version_short(monkeypatch):
     assert service_config.get_version_short() == 'dev:0.0.1'
 
 
+def test_version_short_none(monkeypatch):
+    monkeypatch.delenv('SL_VERSION')
+    assert service_config.get_version_short() is None
+
+
 def test_get_info(monkeypatch):
     monkeypatch.setenv('SL_VERSION', 'recruiter-1912/dev:0.0.1')
     monkeypatch.setenv('SL_ENVIRONMENT', 'test')
