@@ -9,6 +9,8 @@ services:
       context: ./dev
       dockerfile: Dockerfile
     environment:
+      PYPI_USERNAME: "${PYPI_USERNAME}"
+      PYPI_PASSWORD: "${PYPI_PASSWORD}"
       SL_VERSION: *dev_version
       SL_ENVIRONMENT: test
     volumes:
