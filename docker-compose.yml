@@ -36,7 +36,7 @@ services:
     environment:
       PORT: 7999
       REDIS_HOST: redis
-      REDIS_PORT: "4999"
+      REDIS_PORT: 4999
       POSTGRES_DB: banana_dev
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5999
@@ -67,7 +67,7 @@ services:
 
   ### DATABASE
   postgres:
-    image: postgres:12.4
+    image: postgres:13.1
     ports:
       - "5999:5999"
     environment:
