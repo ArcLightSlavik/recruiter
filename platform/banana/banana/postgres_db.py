@@ -11,7 +11,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://{postgres_user}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_db}"
+# SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://{postgres_user}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_db}"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 
 
 class PostgresSettings(BaseSettings):
