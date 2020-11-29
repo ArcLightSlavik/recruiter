@@ -1,42 +1,36 @@
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import Session
 
-from . import models
-from . import schemas
+from . import models, schemas
 
 
-async def get_user(db: AsyncSession, user_id: int):
-    db_execute = await db.execute(select(models.User).where(models.User.id == user_id))
-    return db_execute.scalars().first()
+def get_user(db: Session, user_id: int):
+    return db.query(models.User).filter(models.User.id == user_id).first()
 
 
-async def get_user_by_email(db: AsyncSession, email: str):
-    db_execute = await db.execute(select(models.User).where(models.User.email == email))
-    return db_execute.scalars().first()
+def get_user_by_email(db: Session, email: str):
+    return db.query(models.User).filter(models.User.email == email).first()
 
 
-async def get_users(db: AsyncSession, skip: int = 0, limit: int = 100):
-    db_execute = await db.execute(select(models.User).offset(skip).limit(limit))
-    return db_execute.scalars().all()
+def get_users(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.User).offset(skip).limit(limit).all()
 
 
-async def create_user(db: AsyncSession, user: schemas.UserCreate):
+def create_user(db: Session, user: schemas.UserCreate):
     fake_hashed_password = user.password + "notreallyhashed"
     db_user = models.User(email=user.email, hashed_password=fake_hashed_password)
     db.add(db_user)
-    await db.commit()
-    await db.refresh(db_user)
+    db.commit()
+    db.refresh(db_user)
     return db_user
 
 
-async def get_items(db: AsyncSession, skip: int = 0, limit: int = 100):
-    db_execute = await db.execute(select(models.Item).offset(skip).limit(limit))
-    return db_execute.scalars().all()
+def get_items(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Item).offset(skip).limit(limit).all()
 
 
-async def create_user_item(db: AsyncSession, item: schemas.ItemCreate, user_id: int):
+def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
     db_item = models.Item(**item.dict(), owner_id=user_id)
     db.add(db_item)
-    await db.commit()
-    await db.refresh(db_item)
+    db.commit()
+    db.refresh(db_item)
     return db_item
