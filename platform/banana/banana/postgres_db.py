@@ -1,18 +1,13 @@
 from __future__ import annotations
 
-from typing import Generator
-
 from pydantic import Field
 from pydantic import BaseSettings
 
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.ext.asyncio import engine
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
-
-# SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://{postgres_user}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_db}"
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+SQLALCHEMY_DATABASE_URL = "postgresql://{postgres_user}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_db}"
 
 
 class PostgresSettings(BaseSettings):
@@ -26,36 +21,43 @@ class PostgresSettings(BaseSettings):
 class AlchemySettings:
 
     def __init__(self):
-        self.db_url = None
+        self._db_url = None
         self._alchemy_base = None
         self._alchemy_engine = None
+        self._alchemy_session = None
 
         self.generate()
 
     def generate(self) -> None:
         postgres = PostgresSettings()
-        self.db_url = SQLALCHEMY_DATABASE_URL.format(**postgres.dict())
         self._alchemy_base = declarative_base()
-        self._alchemy_engine = create_async_engine(self.db_url)
+        self._db_url = SQLALCHEMY_DATABASE_URL.format(**postgres.dict())
+        self._alchemy_engine = create_engine(self._db_url)
+        self._alchemy_session = sessionmaker(autocommit=False, autoflush=False, bind=self._alchemy_engine)
 
-    def get_base(self) -> declarative_base:
+    def get_base(self):
         if self._alchemy_base is None:
             self.generate()
         return self._alchemy_base
 
-    def get_engine(self) -> engine:
+    def get_engine(self):
         if self._alchemy_engine is None:
             self.generate()
         return self._alchemy_engine
+
+    def get_session(self):
+        if self._alchemy_session is None:
+            self.generate()
+        return self._alchemy_session
 
 
 alchemy_settings = AlchemySettings()
 
 
 # Dependency
-async def get_db() -> Generator[AsyncSession, None, None]:
-    session = AsyncSession(alchemy_settings.get_engine())
+def get_db():
+    db = alchemy_settings.get_session()()
     try:
-        yield session
+        yield db
     finally:
-        await session.close()
+        db.close()
