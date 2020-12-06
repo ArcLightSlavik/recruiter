@@ -20,8 +20,9 @@ def async_redis_db():
 
 
 @pytest.fixture
-def api() -> fastapi.testclient.TestClient:
-    return fastapi.testclient.TestClient(main.app)
+def api():
+    with fastapi.testclient.TestClient(main.app) as client:
+        yield client
 
 
 @pytest.fixture
