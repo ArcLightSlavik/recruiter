@@ -4,8 +4,8 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 # RUN pip install --trusted-host host.docker.internal --extra-index-url http://host.docker.internal:1673 -r requirements.txt
 
-ADD . /banana
-WORKDIR /banana
+ADD . /suzuka
+WORKDIR /suzuka
 
 RUN echo 'export PS1="${SL_VERSION:15}:\w$ "' >> /root/.bashrc
 

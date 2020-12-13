@@ -23,4 +23,4 @@ async def test_version(async_api):
     response.raise_for_status()
     response_json = response.json()
     result = response_json['version'].split(':')[0]
-    assert result == 'recruiter-1912/banana'
+    assert result == 'recruiter-1912/suzuka'

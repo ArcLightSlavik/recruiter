@@ -40,9 +40,9 @@ class Dev(Service):
     path = '/home/recruiter'
 
 
-class Banana(Service):
+class Suzuka(Service):
 
-    path = '/home/recruiter/platform/banana'
+    path = '/home/recruiter/platform/suzuka'
 
 
 class Monza(Service):
@@ -72,7 +72,7 @@ class Postgres(Service):
 
 _services = [
     Dev,
-    Banana,
+    Suzuka,
     Monza,
     Utils,
     Pypi,

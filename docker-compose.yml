@@ -23,31 +23,31 @@ services:
     command: /bin/bash
 
   ### API
-  banana:
-    image: &banana_version recruiter-1912/banana:0.0.1
+  suzuka:
+    image: &suzuka_version recruiter-1912/suzuka:0.0.1
     build:
-      context: ./platform/banana
+      context: ./platform/suzuka
       dockerfile: Dockerfile
     depends_on:
       - postgres
       - redis
     ports:
-      - "7999:7999"
+      - "1234:1234"
     environment:
-      PORT: 7999
+      PORT: 1234
       REDIS_HOST: redis
       REDIS_PORT: 4999
       POSTGRES_DB: banana_dev
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5999
-      POSTGRES_USER: banana
-      POSTGRES_PASSWORD: banana
-      SL_VERSION: *banana_version
+      POSTGRES_USER: suzuka
+      POSTGRES_PASSWORD: suzuka
+      SL_VERSION: *suzuka_version
       SL_ENVIRONMENT: test
     volumes:
-      - ~/code/recruiter/platform/banana:/home/platform/banana
-    working_dir: /home/platform/banana
-    command: /home/platform/banana/serve.sh
+      - ~/code/recruiter/platform/suzuka:/home/platform/suzuka
+    working_dir: /home/platform/suzuka
+    command: /home/platform/suzuka/serve.sh
 
   ### FRONT END
   monza:
@@ -56,7 +56,7 @@ services:
       context: ./platform/monza
       dockerfile: Dockerfile
     depends_on:
-      - banana
+      - suzuka
     ports:
       - 6622:6622
     environment:
@@ -89,9 +89,9 @@ services:
     ports:
       - "5999:5999"
     environment:
-      - POSTGRES_DB=banana_dev
-      - POSTGRES_USER=banana
-      - POSTGRES_PASSWORD=banana
+      - POSTGRES_DB=suzuka_dev
+      - POSTGRES_USER=suzuka
+      - POSTGRES_PASSWORD=suzuka
     command: -p 5999
 
   redis:
