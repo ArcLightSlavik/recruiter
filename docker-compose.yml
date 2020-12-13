@@ -49,6 +49,24 @@ services:
     working_dir: /home/platform/banana
     command: /home/platform/banana/serve.sh
 
+  ### FRONT END
+  monza:
+    image: &monza_version recruiter-1912/monza:0.0.1
+    build:
+      context: ./platform/monza
+      dockerfile: Dockerfile
+    depends_on:
+      - banana
+    ports:
+      - 6622:6622
+    environment:
+      PORT: 6622
+      SL_VERSION: *monza_version
+      SL_ENVIRONMENT: test
+    volumes:
+      - ~/code/recruiter/platform/monza:/home/platform/monza
+    working_dir: /home/platform/monza
+
   ### PIPABLE
   utils:
     image: &utils_version recruiter-1912/utils:0.0.1

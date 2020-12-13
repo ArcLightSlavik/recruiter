@@ -45,6 +45,11 @@ class Banana(Service):
     path = '/home/recruiter/platform/banana'
 
 
+class Monza(Service):
+
+    path = '/home/recruiter/platform/monza'
+
+
 class Utils(PipService):
 
     path = '/home/recruiter/pipable/utils'
@@ -68,6 +73,7 @@ class Postgres(Service):
 _services = [
     Dev,
     Banana,
+    Monza,
     Utils,
     Pypi,
     Redis,
