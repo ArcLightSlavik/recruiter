@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Hello world</h1>
+  {{ response_data.name }}
+  <br>
+  {{ response_data.employee_number }}
+  <br>
+  {{ response_data.locations }}
+  <br>
+  {{ response_data.website_url }}
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      response_data: null
+    }
+  },
+  created() {
+    axios.get('http://127.0.0.1:1234/company/google').then(response => {
+      this.response_data = response.data
+    }).catch(error => {
+      console.log(error)
+    })
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
