@@ -45,11 +45,6 @@ class Suzuka(Service):
     path = '/home/recruiter/platform/suzuka'
 
 
-class Monza(Service):
-
-    path = '/home/recruiter/platform/monza'
-
-
 class Utils(PipService):
 
     path = '/home/recruiter/pipable/utils'
@@ -73,7 +68,6 @@ class Postgres(Service):
 _services = [
     Dev,
     Suzuka,
-    Monza,
     Utils,
     Pypi,
     Redis,
