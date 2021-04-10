@@ -9,7 +9,7 @@ def call(cmd):
 
 
 def call_root(cmd):
-    os.chdir(os.path.expanduser('~/code/recruiter'))
+    os.chdir(os.path.expanduser('~/code/zeppelin'))
     call(f'{cmd}')
 
 
@@ -19,10 +19,10 @@ def call_output(cmd):
 
 
 def get_main_folder():
-    if os.path.exists('/app/recruiter'):
-        return '/app/recruiter'
+    if os.path.exists('/app/zeppelin'):
+        return '/app/zeppelin'
 
-    user_folder = os.path.expanduser('~/code/recruiter')
+    user_folder = os.path.expanduser('~/code/zeppelin')
     if os.path.exists(user_folder):
         return user_folder
     raise Exception('Recruiter folder not found')

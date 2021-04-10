@@ -4,7 +4,7 @@ services:
 
   ### DEV
   dev:
-    image: &dev_version recruiter-1912/dev:0.0.1
+    image: &dev_version zeppelin-1912/dev:0.0.1
     build:
       context: ./dev
       dockerfile: Dockerfile
@@ -15,16 +15,16 @@ services:
       SL_ENVIRONMENT: test
     volumes:
       - ~/code:/home
-      - ~/code/recruiter:/home/recruiter
-      - ~/code/recruiter/pipable:/home/recruiter/pipable
-      - ~/code/recruiter/platform:/home/recruiter/platform
-      - ~/code/recruiter/scripts:/opt/scripts
-    working_dir: /home/recruiter
+      - ~/code/zeppelin:/home/zeppelin
+      - ~/code/zeppelin/pipable:/home/zeppelin/pipable
+      - ~/code/zeppelin/platform:/home/zeppelin/platform
+      - ~/code/zeppelin/scripts:/opt/scripts
+    working_dir: /home/zeppelin
     command: /bin/bash
 
   ### API
   suzuka:
-    image: &suzuka_version recruiter-1912/suzuka:0.0.1
+    image: &suzuka_version zeppelin-1912/suzuka:0.0.1
     build:
       context: ./platform/suzuka
       dockerfile: Dockerfile
@@ -45,13 +45,13 @@ services:
       SL_VERSION: *suzuka_version
       SL_ENVIRONMENT: test
     volumes:
-      - ~/code/recruiter/platform/suzuka:/home/platform/suzuka
+      - ~/code/zeppelin/platform/suzuka:/home/platform/suzuka
     working_dir: /home/platform/suzuka
     command: /home/platform/suzuka/serve.sh
 
   ### PIPABLE
   utils:
-    image: &utils_version recruiter-1912/utils:0.0.1
+    image: &utils_version zeppelin-1912/utils:0.0.1
     build:
       context: ./pipable/utils
       dockerfile: Dockerfile
@@ -62,7 +62,7 @@ services:
       SL_VERSION: *utils_version
       SL_ENVIRONMENT: test
     volumes:
-      - ~/code/recruiter/pipable:/home/platform
+      - ~/code/zeppelin/pipable:/home/platform
     working_dir: /home/platform/utils
 
   ### DATABASE

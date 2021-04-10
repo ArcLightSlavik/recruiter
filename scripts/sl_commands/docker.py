@@ -2,10 +2,10 @@ from . import utils
 
 
 def run(docker_image, cmd, no_deps=True):
-    # If recruiter_{service}_1 is not running, runs a temp container, execute command and remove container.
+    # If zeppelin_{service}_1 is not running, runs a temp container, execute command and remove container.
     # If container is already running, "exec" inside container
 
-    docker_service_name = f'recruiter_{docker_image}_1'
+    docker_service_name = f'zeppelin_{docker_image}_1'
     if not is_container_running(docker_service_name):
         print(f'<{docker_image}> is not running, so I will start a container for this command and remove it afterwards')
         options = ['--rm']

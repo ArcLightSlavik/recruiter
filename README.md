@@ -1,6 +1,6 @@
-# 🎯 Recruiter
+# 🎯 Zeppelin
 
-Recruier is a platform for display and interaction with job applications, built using Python and FastAPI.
+Zeppelin is a platform for display and interaction with job applications, built using Python and FastAPI.
 
 # Install
 
@@ -8,15 +8,15 @@ This repository is optimized for unix operating system and uses docker exclusive
 
 1. mkdir -p ~/code
 2. cd ~/code
-3. git clone https://github.com/ArcLightSlavik/recruiter
-4. sudo ln -s ~/code/recruiter/scripts/sl /usr/local/bin/sl
-5. cd ~/code/recruiter
+3. git clone https://github.com/ArcLightSlavik/zeppelin
+4. sudo ln -s ~/code/zeppelin/scripts/sl /usr/local/bin/sl
+5. cd ~/code/zeppelin
 6. pip3 install -r dev/requirements.txt
 7. 🚀
 
 You will be able to use the `sl` command for manipulate docker images.
 The build process is split into:
-1. `sl build  |service_name|` - builds the image using the standart docker-compose build.
+1. `sl build  |service_name|` - builds the image using the standard docker-compose build.
 2. `sl serve  |service_name|` - starts a local server with reload capability, useful when working with frontend.
 3. `sl shell  |service_name|` - bashes into a running container, useful for running tests.
 4. `sl stop   |service_name|` - stops the docker image.

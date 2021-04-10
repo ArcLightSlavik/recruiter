@@ -37,17 +37,17 @@ class PipService(Service):
 
 class Dev(Service):
 
-    path = '/home/recruiter'
+    path = '/home/zeppelin'
 
 
 class Suzuka(Service):
 
-    path = '/home/recruiter/platform/suzuka'
+    path = '/home/zeppelin/platform/suzuka'
 
 
 class Utils(PipService):
 
-    path = '/home/recruiter/pipable/utils'
+    path = '/home/zeppelin/pipable/utils'
 
     def serve(self):
         raise NotImplementedError
