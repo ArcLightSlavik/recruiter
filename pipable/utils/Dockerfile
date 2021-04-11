@@ -5,7 +5,7 @@ ENV PYTHONPATH=/app:$PYTHONPATH
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-ADD . /recruiter
-WORKDIR /recruiter
+ADD . /zeppelin
+WORKDIR /zeppelin
 
-RUN echo 'export PS1="${SL_VERSION:15}:\w$ "' >> /root/.bashrc
+RUN echo 'export PS1="${SL_VERSION:14}:\w$ "' >> /root/.bashrc
